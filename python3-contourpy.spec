@@ -21,6 +21,7 @@ BuildRequires:	python3-meson-python
 BuildRequires:	python3-pybind11
 %if %{with tests}
 BuildRequires:	python3-matplotlib
+BuildRequires:	python3-wurlitzer
 %endif
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
