@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_with	doc	# API documentation
-%bcond_without	tests	# unit tests, nonesense dependency loop with matplotlib
+%bcond_with	tests	# unit tests, nonesense dependency loop with matplotlib
 
 %define		module	contourpy
 Summary:	Python library for calculating contours of 2D quadrilateral grids
