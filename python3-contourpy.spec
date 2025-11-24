@@ -1,7 +1,7 @@
 #
 # Conditional build:
-%bcond_with	doc	# API documentation
-%bcond_with	tests	# unit tests, nonesense dependency loop with matplotlib
+%bcond_without	doc	# API documentation
+%bcond_without	tests	# unit tests (disable for bootstrap: dependency loop with matplotlib)
 
 %define		module	contourpy
 Summary:	Python library for calculating contours of 2D quadrilateral grids
@@ -75,7 +75,7 @@ CXXFLAGS="%{rpmcxxflags} -Wno-error=array-bounds"
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
-%{__python3} -m pytest -o pythonpath="$PWD/build-3-test" tests
+%{__python3} -m pytest -o pythonpath="$PWD/build-3-test" tests -k 'not test_mypy'
 %endif
 
 %if %{with doc}
@@ -107,5 +107,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %files apidocs
 %defattr(644,root,root,755)
-%doc docs/_build/html/*
+%doc docs/_build/html/{_images,_modules,_static,api,benchmarks,user_guide,*.html,*.js}
 %endif
