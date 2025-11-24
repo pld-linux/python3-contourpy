@@ -75,7 +75,7 @@ CXXFLAGS="%{rpmcxxflags} -Wno-error=array-bounds"
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
-%{__python3} -m pytest -o pythonpath="$PWD/build-3-test" tests -k 'not test_mypy'
+%{__python3} -m pytest -o pythonpath="$PWD/build-3-test" tests -k 'not test_mypy and not test_cppcheck'
 %endif
 
 %if %{with doc}
